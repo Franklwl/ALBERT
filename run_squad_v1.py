@@ -53,10 +53,11 @@ flags.DEFINE_string(
     "This specifies the model architecture.")
 
 flags.DEFINE_string("vocab_file", None,
-                    "The vocabulary file that the BERT model was trained on.")
+                    "The vocabulary file that the ALBERT model was trained on,"
+                    "can be sentence models or wordpiece vocab file.")
 
-flags.DEFINE_string("spm_model_file", None,
-                    "The model file for sentence piece tokenization.")
+flags.DEFINE_bool("use_spm", True,
+                  "Whether the vocab_file is a spm model or not")
 
 flags.DEFINE_string(
     "output_dir", None,
@@ -257,7 +258,7 @@ def main(_):
   tokenizer = fine_tuning_utils.create_vocab(
       vocab_file=FLAGS.vocab_file,
       do_lower_case=FLAGS.do_lower_case,
-      spm_model_file=FLAGS.spm_model_file,
+      use_spm=FLAGS.use_spm,
       hub_module=FLAGS.albert_hub_module_handle)
 
   tpu_cluster_resolver = None
@@ -544,7 +545,7 @@ def main(_):
 
 
 if __name__ == "__main__":
-  flags.mark_flag_as_required("spm_model_file")
+  flags.mark_flag_as_required("vocab_file")
   flags.mark_flag_as_required("albert_config_file")
   flags.mark_flag_as_required("output_dir")
   tf.app.run()

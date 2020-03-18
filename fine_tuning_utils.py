@@ -72,14 +72,12 @@ def create_albert(albert_config, is_training, input_ids, input_mask,
                                       use_one_hot_embeddings, use_einsum)
 
 
-def create_vocab(vocab_file, do_lower_case, spm_model_file, hub_module):
+def create_vocab(vocab_file, do_lower_case, use_spm, hub_module):
   """Creates a vocab, either from vocab file or from a TF-Hub module."""
   if hub_module:
     return tokenization.FullTokenizer.from_hub_module(
-        hub_module=hub_module,
-        spm_model_file=spm_model_file)
+        hub_module=hub_module, use_spm=use_spm)
   else:
     return tokenization.FullTokenizer.from_scratch(
-        vocab_file=vocab_file, do_lower_case=do_lower_case,
-        spm_model_file=spm_model_file)
+        vocab_file=vocab_file, do_lower_case=do_lower_case, use_spm=use_spm)
 

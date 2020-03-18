@@ -159,7 +159,7 @@ python -m albert.run_classifier \
   --output_dir=... \
   --init_checkpoint=... \
   --albert_config_file=... \
-  --spm_model_file=... \
+  --vocal_file=... \
   --do_train \
   --do_eval \
   --do_predict \
@@ -212,7 +212,7 @@ python -m albert.run_squad_v1 \
   --predict_feature_file=... \
   --predict_feature_left_file=... \
   --init_checkpoint=... \
-  --spm_model_file=... \
+  --vocal_file=... \
   --do_lower_case \
   --max_seq_length=384 \
   --doc_stride=128 \
@@ -247,7 +247,7 @@ python -m albert.run_squad_v2 \
   --predict_feature_file=... \
   --predict_feature_left_file=... \
   --init_checkpoint=... \
-  --spm_model_file=... \
+  --vocal_file=... \
   --do_lower_case \
   --max_seq_length=384 \
   --doc_stride=128 \
@@ -282,7 +282,7 @@ python -m albert.run_race \
   --eval_file=... \
   --data_dir=...\
   --init_checkpoint=... \
-  --spm_model_file=... \
+  --vocal_file=... \
   --max_seq_length=512 \
   --max_qa_length=128 \
   --do_train \
